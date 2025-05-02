@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>마비노기M 웹페이지</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #343434;
+      color: #be9c8e;
+      text-align: center;
+      padding: 0.5em;
+    }
+    header h1 {
+      font-size: 24px; /* h1은 좀 더 크게 */
+    }
+    header h2 {
+      font-size: 18px;
+    }
+
+    nav a {
+      font-size: 16px;
+
+      color: #be9c8e;
+      text-decoration: none; /* 및줄 제거 */
+
+      position: relative; /* 상대 위치 지정 */
+      transition: all 0.2s ease; /* hover효과를 부드럽게 */
+
+      display: inline-block;
+      margin-bottom: 6px;/* 식별하기 쉽게 링크 간 간격 조절 */
+    }
+    nav a:hover {
+      top: -3px; /* 위로 살짝 이동 */
+      color: #ffcf9f; /* 강조색 */
+      font-weight: bold; /* 강조, 굵게 */
+    }
+    main {
+      width: 1000px;
+      margin: auto;
+      flex-direction:column; /* 수직 정렬 */
+      gap: 20px;
+    }
+
+    hr {  /* 라인 설정 */
+      height: 3px;
+      background-color: #594949;
+      border: none; /* 기본 테두리 제거 */
+    }
+
+    section {  /* 색션 색, 여백, 둥글기, 그림자 설정 */
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 20px;
+      flex: 1 1 45%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="number"] {  /* 입력창 크기 및 여백 설정 */
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    table { /* 테이블 설정 */
+      width: 100%;
+      border-collapse: collapse; /* 기본 간격 제거 */
+      margin-top: 10px;
+    }
+
+    th, td { /* 셀 설정 */
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {  /* 표의 헤더 배경색 */
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+   <h1>
+     쥬시쿨 길드 전용 마비노기M
+   </h1>
+  <hr>
+
+  <nav> <!-- 바로가기 -->
+    <div id="dungeon-timer" style="text-align: center; color: #eeeeee;">
+      <strong>마비노기 모바일 던전 타이머</strong><br>
+      <div id="blackhole-timer">검은 구멍 남은 시간: 계산 중...</div>
+      <div id="blackhole-next">다음 검은 구멍: 계산 중...</div>
+      <div id="gyeolke-timer">결계 남은 시간: 계산 중...</div>
+      <div id="gyeolke-next">다음 결계: 계산 중...</div>
+    </div>
+    <hr>
+    <h2>유용한 정보</h2>
+    <a href="#materials">재료 채집</a> <br>
+    <a href="#gearGuide">장비 세팅 가이드</a> <br>
+    <h2>직업별 공략</h2>
+     <a href="#Sword">검술사 공략</a> <br>
+     <a href="#Crossbow">석궁사수 공략</a> <br>
+     <a href="#Ice">빙결술사 공략</a> <br>
+     <a href="#Monk">수도사 공략</a> <br>
+     <a href="#Dualblade">듀얼블레이드 공략</a> <br>
+     <a href="#GeatSword">대검전사 공략</a> <br>
+     <h2>계산기</h2>
+     <a href="#Damage">데미지 계산기</a>
+  </nav>
+  <hr>
+</header>
+
+<main>
+  <!-- 재료 채집 -->
+  <section id="materials">
+    <caption><h2>효율적인 재료 채집</h2></caption>
+    <table>
+      <thead>
+      <tr>
+        <th>카테고리</th>
+        <th>채집대상</th>
+        <th>활용 아이템 및 개수</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td>🥚 계란 채집</td>
+        <td>계란</td>
+        <td>사과 수플레 (40개), 황금 계란	사과 수플레 (40개), 황금 계란</td>
+      </tr>
+
+      <tr>
+        <td>🌳 나무 베기</td>
+        <td>나뭇가지, 나무 진액, 애벌레 등</td>
+        <td>장수풍뎅이 (60마리, 100마리) <br>
+          황금 풍뎅이 </td>
+      </tr>
+
+      <tr>
+        <td rowspan="2">⛏️ 광석 캐기</td>  <!-- rowspan을 사용해 같은 카테고리를 하나로 병합-->
+        <td>돌멩이</td>
+        <td>전문 캠프파이어 키트 → 돌멩이 100개 활용</td>
+      </tr>
+      <tr>
+        <td>얼음</td>
+        <td>얼음 딸기 주스 (100개)</td>
+      </tr>
+
+      <tr>
+        <td rowspan="12">🌿 약초 채집</td>
+        <td>버섯류</td>
+        <td>포자 선택 시 더 많이 채집 가능</td>
+      </tr>
+      <tr>
+        <td>네잎 클로버</td>
+        <td>치명타 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>허브</td>
+        <td>구운 고기 (20개) <br>
+          조개찜 (30개)</td>
+      </tr>
+      <tr>
+        <td>블러디 허브</td>
+        <td>최상급 회복 물약 (120개) <br>
+          뛰어난 회복 물약(160개)</td>
+      </tr>
+      <tr>
+        <td>화살꽃</td>
+        <td>이동속도 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>마나 허브</td>
+        <td>광역 강화 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>새록 버섯</td>
+        <td>회복 물약 (20개) <br>
+          새록 버섯 포자 10개</td>
+      </tr>
+      <tr>
+        <td>튼튼 버섯</td>
+        <td>튼튼 버섯 포자로 10개 이상</td>
+      </tr>
+      <tr>
+        <td>끈기 풀</td>
+        <td>궁극기 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>쑥쑥 버섯</td>
+        <td>상급 회복 물약 (20개)</td>
+      </tr>
+      <tr>
+        <td>숨숨꽃</td>
+        <td>최상급 회복 물약 (60개) <br>
+          얼음협곡 3구역 약초 구역 → 네잎클로버(치명타 비약 100개)</td>
+      </tr>
+      <tr>
+        <td>깔끔 버섯</td>
+        <td>최상급 회복 물약 (60개)</td>
+      </tr>
+
+      <tr>
+        <td rowspan="3">🐑 양털 깎기</td>
+        <td>양털, 거미줄</td>
+        <td>황금 채집물 획득 시 무제한 채집 가능</td>
+      </tr>
+      <tr>
+        <td>양털</td>
+        <td>황금 양털 전까지 상급 양털, 상급 양털+</td>
+      </tr>
+      <tr>
+        <td>거미줄</td>
+        <td>황금 거미줄 전까지 하루살이, 흰꽃 나비</td>
+      </tr>
+
+      <tr>
+        <td rowspan="2">🌾 추수</td>
+        <td>밀</td>
+        <td>일반 채집 시 10개 채집 후 종료 <br>
+          생활 스킬 → 추수 → 밀로 진행하면 10번 채집 가능</td>
+      </tr>
+      <tr>
+        <td>옥수수</td>
+        <td>콘치즈 (100개)</td>
+      </tr>
+
+      <tr>
+        <td rowspan="3">🌱 호미질</td>
+        <td>감자, 양파, 조개</td>
+        <td>전문 캠프파이어 키트 → 돌멩이 100개</td>
+      <tr>
+        <td>감자만</td>
+        <td>감자 수프 (120개)</td>
+      </tr>
+      <tr>
+        <td>점토</td>
+        <td>감자 & 양파 채집 중 획득</td>
+      </tr>
+      </tr>
+      <tr>
+        <td rowspan="6">🐞 곤충 채집</td>
+        <td>똑딱 반딧불이</td>
+        <td>이동속도 비약 (60개)<br>
+          연타 강화 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>장수 풍뎅이</td>
+        <td>피해 감소 비약 (60개)<br>
+          강타 강화 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>동전 무당벌레</td>
+        <td>치명타 비약 (60개)</td>
+      </tr>
+      <tr>
+        <td>흰꽃나비</td>
+        <td>궁극기 비약 (60개)<br>
+          광역 강화 비약 (100개)</td>
+      </tr>
+      <tr>
+        <td>황금 풍뎅이, 황금나비</td>
+        <td>곤충 채집</td>
+      </tr>
+      <tr>
+        <td>하루살이</td>
+        <td>광역 강화 비약(100개)</td>
+      </tr>
+
+      <tr>
+        <td rowspan="3">🏡 일상 채집</td>
+        <td>물이 든 병</td>
+        <td>염색약 (10개 → 물 30개)<br>
+          조개찜 (50개)</td>
+      <tr>
+        <td>우유</td>
+        <td>포크 인 밀크 (40개, 레벨2)<br>
+          감자수프 (50개, 레벨3)</td>
+      </tr>
+      <tr>
+        <td>사과</td>
+        <td>사과주스 (40개)<br>
+          사과 수플레 (80개)<br>
+          사과 생크림 케이크 (120개)</td>
+      </tr>
+
+
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 장비 세팅 가이드 -->
+  <section id="gearGuide">
+    <h2>장비 세팅 가이드</h2>
+    <a href="https://www.youtube.com/watch?v=i8_IyiY-9N4" target="_blank"> <!--새 탭에서 열기-->
+      <img src="https://img.youtube.com/vi/i8_IyiY-9N4/0.jpg">
+    </a>
+  </section>
+
+  <!-- 검술사 공략 -->
+  <section id="Sword">
+    <h2>📘 검술사 공략집</h2>
+    <h3>🛡️ 엠블럼 추천</h3>
+    <ul>
+      <li><strong>강렬함:</strong> 연타 적중 시 5초간 강타 피해 18% 증가<br>
+        → 다단히트 스킬 위주의 검술사와 시너지 우수</li>
+      <li><strong>현란함:</strong> 치명타 확률 10% 증가, 치명 피해 30% 증가<br>
+        → 치명타 중심 빌드에 필수 선택</li>
+      <li><strong>날쌤:</strong> 강타 적중 시 5초간 연타 피해 18% 증가<br>
+        → 강타/연타 혼합형 세팅에 효과적</li>
+    </ul>
+    <h3>⚔️ 무기 룬 추천</h3>
+    <ul>
+      <li>결투: 전체 피해 18% 증가, 멀티히트 피해 6% 감소</li>
+      <li>옛 검투사: 피해 시 공격력 최대 24% 증가 중첩</li>
+      <li>천 자루 검: 클래스 레벨 40마다 공격력 4%씩 증가, 최대 24%</li>
+      <li>가시 덩굴: 주고받는 피해 모두 25% 증가 (극딜용)</li>
+      <li>무수한 덤금질: 장비 +10, +15강 시 공격력 최대 20% 증가</li>
+      <li>파열: 치명타 시 출혈 + 받는 피해 10% 증가</li>
+      <li>격노: 3초 주기로 공격력 36% 증가</li>
+      <li>경이: 기본 공격 시 스킬 재사용 시간 6% 감소</li>
+    </ul>
+
+    <h3>🛡️ 방어구 룬 추천</h3>
+    <ul>
+      <li>붉은 맹약: 룬 위에 있을 시 공격력 18% 증가</li>
+      <li>마나 격류: 스킬 사용 시 공격력 최대 14% 증가</li>
+      <li>바위 거인: 강타 시 공격력 최대 29% 증가 (5초간)</li>
+      <li>깨달음: 클래스 레벨 65 이상 시 공격력 10% 증가</li>
+      <li>끝없는 활력: 추가타 시 체력 1.3% 회복</li>
+      <li>생명: 피해 시 방어력 증가 및 체력 회복 (지속 생존)</li>
+    </ul>
+
+    <h3>💍 전설 룬 추천</h3>
+    <ul>
+      <li>관통: 쾌검 강화 (범위 피해)</li>
+      <li>낙화: 비검 후 고데미지 스킬 발동</li>
+      <li>압박: 칼집 치기 → 범위 피해 강화</li>
+      <li>맹렬: 간파 성공 시 추가 피해 (보스전용)</li>
+      <li>무희: 질풍베기 속도 증가 (집중 상태 유지 필요)</li>
+    </ul>
+
+    <h3>🔷 상황별 전설 룬 추천</h3>
+    <ul>
+      <li><strong>필수:</strong> 낙화(비검), 관통(강철쐐기)</li>
+      <li><strong>사냥:</strong> 압박(칼집치기), 무희(질풍베기)</li>
+      <li><strong>보스전:</strong> 맹렬(간파), 무희(질풍베기)</li>
+    </ul>
+
+    <h3>🔄 딜싸이클 정리</h3>
+    <p><strong>❗ 상황에 따라 유연하게 조절 필요</strong></p>
+    <p><strong>첫 번째 추천 순서:</strong><br>
+      1 → 3 → 4 → 1 → 2 → 4 → 3 → 1 → 4 → 4</p>
+    <p><strong>두 번째 추천 순서:</strong><br>
+      2 → 4 → 5 → 3 → 4 → 1 → 4 → 4 → 1 → 4 → 2 → 4</p>
+
+    <h3>🛠 장비 개조 / 각인 / 보석 추천</h3>
+    <ul>
+      <li><strong>🔧 장비 개조:</strong> 스킬 우선순위 - 간파, 비검</li>
+      <li><strong>🌀 각인 재설정:</strong> 치명타 확률, 스킬 위력 증가</li>
+      <li><strong>💎 보석 스킬 세공:</strong> 강타 > 연타 > 이동속도</li>
+    </ul>
+  </section>
+
+  <!-- 석궁사수 공략 -->
+  <section id="Crossbow">
+    <h2>🏹 석궁사수 공략집</h2>
+
+    <h3>🛡️ 엠블럼 추천</h3>
+    <ul>
+      <li><strong>굳건함:</strong> 적중 시 15초마다 공격력/방어력 1% 증가 (최대 10중첩)<br>→ 장기 전투에 유리</li>
+      <li><strong>날쌤:</strong> 강타 적중 시 연타 피해 증가 → 스킬 연계와 궁합 좋음</li>
+      <li><strong>현란함:</strong> 치명타 확률/피해 증가 → 치명타 의존도 높은 빌드에 필수</li>
+    </ul>
+
+    <h3>🪓 무기 룬 추천</h3>
+    <ul>
+      <li>천 자루 검: 클래스 레벨 40마다 공격력 증가 (최대 24%)</li>
+      <li>무수한 담금질: +10 강화 시 공격력 12%, +15 시 8% 추가 증가</li>
+      <li>결투: 모든 피해 18% 증가, 멀티히트 피해 6% 감소</li>
+      <li>눈 먼 분노: 연타 적중 시 최대 12중첩, 비연타 적중 시 해제</li>
+      <li>파열: 치명타 시 출혈 + 받는 피해 증가 (흡혈 룬과 연계 추천)</li>
+    </ul>
+
+    <h3>🛡️ 방어구 룬 추천</h3>
+    <ul>
+      <li>마나 격류: 스킬 사용 시 공격력 증가 (중첩 가능)</li>
+      <li>바위 거인: 강타 시 공격력 증가, 3중첩 후 폭발적 증가</li>
+      <li>초기: 전투 시작 후 30초간 피해 증가</li>
+      <li>안정: 체력 75% 이상 시 피해 증가</li>
+      <li>깨달음: 클래스 레벨에 따른 공격력 증가</li>
+      <li>흡혈: 출혈 상태 적에게 공격력 증가</li>
+      <li>폭풍: 무방비 공격 시 속도 증가</li>
+      <li>붉은 맹약: 룬 위에 있을 시 공격력 증가</li>
+    </ul>
+
+    <h3>🎩 추천 유니크 투구</h3>
+    <ul>
+      <li><strong>모리안의 가호:</strong> 공격력 증가 + 생존기</li>
+      <li><strong>채워지지 않는 굶주림:</strong> 강력하지만 위험한 옵션</li>
+    </ul>
+
+    <h3>💍 장신구 룬 정리</h3>
+    <ul>
+      <li><strong>감전:</strong> 쇼크 익스플로전 강화 (감전 + 치명타 확률 증가)</li>
+      <li><strong>방해:</strong> 슬라이딩 스텝 강화 (범위 피해)</li>
+      <li><strong>전류:</strong> 스프레딩 볼트 → 과충전 감전</li>
+      <li><strong>반전:</strong> 슬라이딩 스텝 강화 (2개 탄창)</li>
+      <li><strong>화약:</strong> 버스터 샷 강화 (분진 → 화염 폭발)</li>
+      <li><strong>연쇄:</strong> 거스팅 볼트 → 연쇄 번개 피해</li>
+    </ul>
+    <p><strong>⭐ 추천 조합:</strong> 연쇄(4번), 반전(3번), 감전(2번)</p>
+
+    <h3>⚔️ 스킬 딜싸이클</h3>
+    <p>1️⃣ 3번 스킬로 스택 쌓기 → 2️⃣ 2번 스킬로 연계 → 3️⃣ 4번 스킬 3연타</p>
+    <p>🛑 <strong>4번 사용 시 장판 피해 주의!</strong></p>
+
+    <h3>🛠 장비 개조 / 각인 / 보석 팁</h3>
+    <ul>
+      <li><strong>장비 개조:</strong> 1순위: 4번, 2순위: 3번, 보조: 2번</li>
+      <li><strong>각인 재설정:</strong> 치명타, 연타</li>
+      <li><strong>보석 스킬 세공:</strong> 원소 > 연타 > 이동방해</li>
+    </ul>
+  </section>
+
+  <!-- 빙결술사 공략 -->
+  <section id="Ice">
+    <h2>❄️ 빙결술사 공략집</h2>
+
+    <h3>🧠 스킬 강화 우선도</h3>
+    <ol>
+      <li> 1번 액티브(엣지) - 각 타수 별 데미지 상승량을 확인해보니, 잘만 굴려준다면 가장 강한 스킬은 1번 스킬.</li>
+      <li> 5번 액티브(글로브) - 딜, 유틸 모두 준수한데에다가 보석까지 맞춘 극한의 고점을 따졌을 때 쿨감 효율을 가장 잘 받는 스킬.</li>
+      <li> 2번 액티브(커터) - 딜적으로도 유틸적으로도 좋은 스킬. 다만 치명타를 고려할 경우 딜 자체는 필드와 비슷함.</li>
+      <li> 공동 3순위, 4번 액티브(필드) - 여러가지 아쉬운 점들이 있으나 딜 자체로는 괜찮은 스킬임.</li>
+      <li> 6번 액티브(궁) - 타 직업은 모르겠으나 내 체감상 빙결은 궁을 많이 쓴다고 생각하는데(어비스 매어 보스방에서만 5번도 써본듯)</li>
+      <li> 3번 액티브(스파이크) - 실드량 안오름, 가동률 낮음, 폭발+반사(사실상 1틱)딜 자체 계수도 높지 않음</li>
+    </ol>
+
+    <h3>📊 기본 스텟</h3>
+    <p><strong>요약 :</strong> 지력 >= 의지 > 솜씨 >= 행운 >>> 힘</p>
+
+    <h4>📈 레벨업 스텟 카드</h4>
+    <p>공격 우선 > 지력 성장 > 의지 성장 > 방어 우선 > 체력 우선</p>
+
+    <h4>🎴 특성 카드</h4>
+    <ul>
+      <li>65렙 체인 스트라이커 (콤보강화, 둘 중 취향대로)</li>
+      <li>60렙 불굴의 의지 (브레이크 당하면 일찍 일어남)</li>
+      <li>55렙 상처 보호 (지속뎀 감소)</li>
+      <li>50렙 강화 물약 향상 (둘 다 상관 x)</li>
+      <li>45렙 방어 태세 (둘 다 상관 x)</li>
+      <li>40렙 회복 의지 (마지막 물약 2배)</li>
+      <li>35렙 아드레날린 (빠른 스킬, 둘 중 취향대로)</li>
+      <li>30렙 전력 질주 (음식 있으면 이속 0.3)</li>
+      <li>25렙 연타 응원 (파티 시 연타 강화)</li>
+      <li>20렙 상상 치료 (5%로 물약 소모 x)</li>
+      <li>15렙 더블 찬스 (추가타)</li>
+      <li>10렙 미식가 (음식 효과 20% 증가)</li>
+      <li>5렙 다재다능 (올스텟 20)</li>
+    </ul>
+
+    <h3>⚔️ 공격 관련 부가 스텟</h3>
+    <ul>
+      <li>1순위 : 연타 강화, 스킬 위력, 추가타, 치명타</li>
+      <li>2순위 : 궁극기, 콤보 강화, 광역 강화, 빠른 스킬, 강타 강화</li>
+      <li>3순위 : 브레이크</li>
+    </ul>
+
+    <h3>🛡️ 추천 룬</h3>
+    <h4>무기 전설</h4>
+    <ul>
+      <li>경이+</li>
+      <li>무수한 담금질</li>
+      <li>옛 검투사</li>
+    </ul>
+
+    <h4>엠블럼 전설</h4>
+    <ul>
+      <li>지혜로움</li>
+      <li>현란함</li>
+      <li>냉혹함</li>
+    </ul>
+
+    <h4>방어구 전설</h4>
+    <ul>
+      <li>응축된 마력(결핍)</li>
+      <li>붉은 맹약</li>
+      <li>검은 서약</li>
+      <li>깨달음</li>
+      <li>쇄빙</li>
+      <li>마나 격류</li>
+      <li>얼어붙은 불꽃(하의)</li>
+      <li>안정+</li>
+      <li>생명+</li>
+      <li>성채+</li>
+      <li>난투+</li>
+      <li>얼어붙음+</li>
+    </ul>
+
+    <h3>🛡️ 방어 관련 부가 스텟</h3>
+    <ul>
+      <li>1순위 : 추가 체력</li>
+      <li>2순위 : 피해 감소</li>
+      <li>3순위 : 급소 회피</li>
+    </ul>
+  </section>
+
+  <!-- 수도사 공략 -->
+  <section id="Monk">
+    <h2>🧘 수도사 공략집</h2>
+
+    <h3>🧩 엠블럼 룬 추천</h3>
+    <ul>
+      <li><strong>지혜로움</strong>: 모든 스킬의 재사용 대기시간 18% 감소<br>→ 수도사의 핵심 엠블럼</li>
+    </ul>
+
+    <h3>⚔️ 무기 룬 추천</h3>
+    <ul>
+      <li><strong>경이</strong>: 기본 공격 적중 시 모든 스킬 재사용 대기시간 6% 감소</li>
+      <li><strong>옛 검투사</strong>: 피해를 입을 때마다 6초간 공격력 4% 증가, 최대 6중첩</li>
+      <li><strong>몰아치는 바람</strong>: 기본 공격 시 공격력 4% 증가, 최대 6중첩</li>
+      <li><strong>무수한 담금질</strong>: 장비 +10 이상 강화 시 공격력 최대 20% 증가</li>
+    </ul>
+
+    <h3>🛡️ 방어구 룬 추천</h3>
+    <ul>
+      <li><strong>검은 서약</strong>: 위치 고정형 보호의 룬 생성, 피해 18% 감소</li>
+      <li><strong>끝없는 활력</strong>: 추가타 적중 시 체력 1.3% 회복</li>
+      <li><strong>난투</strong>: 주변 적이 많을수록 피해 최대 15% 감소</li>
+      <li><strong>생명</strong>: 피해 시 방어력 증가 및 체력 1% 회복 (최대 10중첩)</li>
+      <li><strong>초자연</strong>: 55% 확률로 캐스팅 및 차지 속도 25% 증가</li>
+      <li><strong>신성한 수양</strong>: 보조 스킬 사용 시 공격력 및 회복력 최대 12% 증가</li>
+    </ul>
+
+    <h3>💍 장신구 룬 추천</h3>
+    <ul>
+      <li><strong>응보</strong>: 벽력타를 강화. 진언 3종(빛, 힘, 정화) 활성 시 10초간 벽력장 사용 가능</li>
+      <li><strong>업화</strong>: 치유 스킬을 공격형 스킬로 전환해 자동사냥 효율 극대화</li>
+      <li><strong>광휘</strong>: 화신 스킬을 강화. 쿨타임과 지속 시간 감소 및 광역 피해 발생</li>
+    </ul>
+
+    <p><strong>📌 추천 조합:</strong> 2번: 응보 / 4번: 업화 / 5번: 광휘</p>
+
+    <h3>🔮 진언 및 강화 효과</h3>
+    <ul>
+      <li>✨ 1번 스킬: 빛의 진언</li>
+      <li>💪 2번 스킬: 힘의 진언</li>
+      <li>💧 3번 스킬: 정화의 진언</li>
+      <li>☮️ 4번 스킬: 평온의 진언 (정화와 함께 활용)</li>
+    </ul>
+    <p>✔️ <strong>빛 + 힘 + 정화</strong> 진언을 모두 활성화하면 <strong>2번 스킬 벽력타</strong>가 강화됩니다.</p>
+
+    <h3>🔁 자동사냥 딜 사이클 추천</h3>
+    <ol>
+      <li>1 → 2 → 4 → 2 (강화된 벽력타)</li>
+      <li>5 → 4 → 2</li>
+      <li>4 → 5 → 2</li>
+      <li>1 → 2 → 4 → 2</li>
+      <li>3번은 상황에 따라 유동적으로 사용</li>
+    </ol>
+    <p>※ 궁극기는 위급 상황 시 피해 감소용으로 활용하세요.</p>
+
+    <h3>⚙️ 장비 개조 · 각인 · 보석 세공 팁</h3>
+    <ul>
+      <li><strong>🧪 장비 개조:</strong> 주력 스킬 1번, 2번 중심. 스킬 레벨 위주 강화</li>
+      <li><strong>🧩 각인 재설정:</strong> 연타 관련 옵션 우선</li>
+      <li><strong>💎 보석 세공:</strong> 연타 중심 세공이 효과적</li>
+    </ul>
+  </section>
+
+  <!-- 듀얼블레이드 공략 -->
+  <section id="Dualblade">
+    <h2>🗡 듀얼블레이드 공략집</h2>
+
+    <h3>⚙️ 엠블럼 추천 조합</h3>
+    <ul>
+      <li><strong>🔸 굳건함+</strong><br>
+        → 공격 적중 시 15초마다 공격력, 방어력 1%씩 증가<br>
+        → 최대 10중첩까지 적용되며, 전투가 길어질수록 효율 상승(레이드)
+      </li>
+      <li><strong>🔸 날쌤+</strong><br>
+        → 강타 적중 시 5초간 연타 피해 18% 증가<br>
+        → 연타가 핵심인 듀얼블레이드에게 필수 엠블럼
+      </li>
+      <li><strong>🔸 현란함</strong><br>
+        → 치명타 확률 10%, 치명타 피해 30% 증가<br>
+        → 치명 중심 빌드에 가장 궁합이 좋은 엠블럼
+      </li>
+    </ul>
+
+    <h3>🗡 전설 무기 룬 추천</h3>
+    <ul>
+      <li><strong>⚔ 천 자루 검</strong><br>
+        → 클래스 레벨 40마다 공격력 4% 증가, 최대 6중첩<br>
+        → 현재 6중첩 모두 가능
+      </li>
+      <li><strong>⚔ 무수한 담금질</strong><br>
+        → +10 시 공격력 12%, +15 시 추가 8%<br>
+        → 15강을 위한 장비 강화 비용 발생
+      </li>
+      <li><strong>⚔ 눈 먼 분노</strong><br>
+        → 연타 시 피해 2% 증가, 최대 12중첩<br>
+        → 연타 중심 딜링 구조의 핵심 룬
+      </li>
+      <li><strong>⚔ 파열</strong><br>
+        → 치명타 적중 시 출혈과 6초간 피해 증가 효과 부여<br>
+        → 출혈 기반 스킬과 연계하여 폭딜 가능
+      </li>
+    </ul>
+
+    <h3>🛡 방어구 전설 룬 추천</h3>
+    <p>방어구는 공격 성능을 서포트하면서 생존력도 챙겨야 합니다.</p>
+    <ul>
+      <li>🌀 마나 격류</li>
+      <li>🗿 바위 거인</li>
+      <li>🔥 초기+</li>
+      <li>🩸 흡혈+</li>
+      <li>🧘 안정</li>
+      <li>🌪 폭풍+</li>
+    </ul>
+
+    <h3>💍 장신구 전설 룬 설명과 추천 조합</h3>
+    <p>장신구 룬은 듀얼블레이드의 스킬 강화와 연계 효율을 크게 좌우합니다.</p>
+
+    <h4>🔷 장신구 룬 요약</h4>
+    <ul>
+      <li><strong>열살</strong>: 스플릿 슬래시, 스플릿 다운 → 범위 피해 + 재사용 시간 감소</li>
+      <li><strong>보름달</strong>: 더블 크레센트, 라이징 크레센트 → 재사용 시간 완전 초기화</li>
+      <li><strong>회오리</strong>: 스크류 러시 → 3960 허리케인으로 변경</li>
+      <li><strong>속행</strong>: 하울링 계열 → 스킬 쿨 회복 속도 증가</li>
+      <li><strong>질주</strong>: 라이트닝 퓨리 → 자원 회복 및 재사용 초기화</li>
+      <li><strong>강화</strong>: 하울링 계열 → 피해량 증가</li>
+    </ul>
+
+    <p><strong>✅ 추천 조합:</strong> 1번 열살, 4번 속행, 5번 질주</p>
+    <p>→ 범위 딜, 스킬 연계, 자원 순환까지 모두 챙긴 베스트 세팅</p>
+
+    <h3>🔁 스킬 딜사이클 설명</h3>
+    <p>듀얼블레이드는 스킬 순서를 정확히 운용해야 딜이 최대화됩니다.</p>
+    <pre>5 → 1 → 2 → 3 → 1(강화) → 4 → 1 → 2 → 3 → 4(강화) → 1 → 2 → 3 → 5(강화) → 5</pre>
+
+    <h4>🟢 강화 스킬 사용 순서</h4>
+    <p>→ 강화1 → 강화4 → 강화5</p>
+
+    <h4>🟡 딜 사이클 팁</h4>
+    <p>→ 강화1번 스킬은 방어력 무시 효과가 있으므로 가장 먼저 사용하면 좋습니다.</p>
+
+    <h3>🔧 장비 개조 · 각인 재설정 · 보석 세공 팁</h3>
+    <ul>
+      <li><strong>⚙ 장비 개조</strong><br>
+        1순위: 1번 스플릿 슬래시, 5번 글라이딩 퓨리<br>
+        2순위: 4번 하울링 게일
+      </li>
+      <li><strong>🪓 각인 재설정</strong>: 치명타 또는 연타를 우선</li>
+      <li><strong>💎 보석 스킬 세공</strong>: 1순위 연타</li>
+    </ul>
+  </section>
+
+  <!-- 대검전사 공략 -->
+  <section id="GeatSword">
+    <h2>🗡 대검전사 공략집</h2>
+
+    <h3>⚔️ 엠블럼 추천</h3>
+    <ul>
+      <li><strong>날쌤+</strong>: 강타 적중 시 5초 동안 연타 피해 18% 증가</li>
+      <li><strong>현란함</strong>: 치명타 확률 10%, 치명타 피해 30% 증가</li>
+      <li><strong>강렬함</strong>: 연타 적중 시 5초 동안 강타 피해 18% 증가</li>
+      <li><strong>냉혹함</strong>: 비치명타 시 치명타 확률 12% 증가, 치명타 적중 시 초기화</li>
+    </ul>
+
+    <h3>🛡️ 무기 룬 추천</h3>
+    <ul>
+      <li>가시덩굴: 받는 피해/주는 피해 25% 증가</li>
+      <li>눈먼분노: 연타 피해 2% 증가, 최대 12중첩</li>
+      <li>격전: 5m 내 적 수에 따라 피해량 최대 18% 증가</li>
+      <li>천 자루 검: 클래스 40레벨당 공격력 4% 증가, 최대 24%</li>
+      <li>무수한 담금질: +10 강화 시 12%, +15 시 8% 추가</li>
+      <li>조화(쇄빙·횃불 필수): 35% 확률로 지속피해 (화상, 빙결, 감전)</li>
+      <li>파열: 치명타 시 출혈+받는 피해 10% 증가</li>
+    </ul>
+
+    <h3>🛡️ 방어구 룬 추천</h3>
+    <ul>
+      <li>얼어붙은 불꽃: 기본/스킬 공격 시 지속 피해</li>
+      <li>쇄빙: 빙결 상태 적 공격 시 추가타 확률 10% 증가</li>
+      <li>칼날보루: 강타 시 출혈 부여</li>
+      <li>흡혈: 출혈 상태 적 공격 시 공격력 15% 증가</li>
+      <li>검은 불길: 크로스 공격 시 화상, 카운터 시 정신 피해</li>
+      <li>횃불: 화상 상태 적 공격 시 치명타 확률 10% 증가</li>
+      <li>초자연: 55% 확률로 캐스팅 속도 25% 증가</li>
+      <li>폭풍: 무방비 공격 시 공격/스킬 속도 40% 증가</li>
+      <li>깨달음: 레벨 40+ 시 공격력 6%, 65+ 시 추가 4%</li>
+      <li>붉은 맹약: 룬 위에 있을 시 공격력 18% 증가</li>
+      <li>마나 격류: 스킬 사용 시 공격력 3.5% 증가, 최대 4중첩</li>
+      <li>안정: 체력 75% 이상일 때 피해량 11% 증가</li>
+    </ul>
+
+    <h4>✅ 쌍으로 맞추면 좋은 조합</h4>
+    <ul>
+      <li>얼어붙은 불꽃 + 쇄빙</li>
+      <li>칼날보루 + 흡혈</li>
+      <li>검은 불길 + 횃불</li>
+    </ul>
+
+    <h3>💍 장신구 룬 설명</h3>
+    <ul>
+      <li><strong>회전:</strong> 회전 베기 스킬의 회전 횟수 감소 및 빠른 베기</li>
+      <li><strong>분노:</strong> 발구르기와 어깨 치기에 브레이크 피해 및 전투 템포 상승</li>
+      <li><strong>회심:</strong> 대검술 사용 시 차징 단계별 치명타 확률 증가</li>
+      <li><strong>절단:</strong> 회전 베기 마지막 적들에게 출혈 지속 피해 부여</li>
+      <li><strong>반격:</strong> 라이징 스매시 차징 가능, 피해 받으면 차징 최대로 상승</li>
+      <li><strong>탄력:</strong> 가르기 스킬 차징 가능, 탄력 효과로 차징 스킬 강화</li>
+    </ul>
+
+    <p><strong>⭐ 추천 조합:</strong> 1번 회전 / 2번 반격 / 5번 회심</p>
+
+    <h3>🎯 스킬 딜싸이클</h3>
+    <pre>1번 → 4번 → 5번 → 1번 → 4번 → 2번 → 5번 → 1번 → 4번 → 3번 → 5번</pre>
+    <p>💡 번호는 스킬 슬롯 기준이며, 순서를 반복하면 딜 극대화에 유리합니다.</p>
+
+    <h3>🛠 장비 개조 / 각인 재설정 / 보석 세공</h3>
+    <ul>
+      <li><strong>장비 개조:</strong> 1번 회전 베기, 2번 라이징 스매시, 5번 대검술</li>
+      <li><strong>각인 재설정:</strong> 강타 강화 또는 치명타</li>
+      <li><strong>보석 세공:</strong> 보조, 강타 중심</li>
+    </ul>
+  </section>
+  <!-- 데미지 계산기 -->
+  <section id="Damage">
+    <h2>아직 계산식을 추가하지 않아서 작동은 안합니다</h2>
+    <label>공격력:</label>
+    <input type="number" id="attack" placeholder="예: 1200">
+    <label>스킬 계수:</label>
+    <input type="number" id="skill" placeholder="예: 1.5" step="0.1">
+    <label>버프 계수:</label>
+    <input type="number" id="buff" placeholder="예: 150">
+    <input type="submit" value="완료"> <br>
+    <label>예상 데미지:</label>
+    <div>150200</div> <!-- 실제로 계산하는것이 아니기에 임시값 -->
+  </section>
+
+  <!-- 타이머 JS -->
+<!--  <script>-->
+<!--    function updateDungeonTimers() {-->
+<!--      const now = new Date();-->
+<!--      const nextBlackholeTime = new Date();-->
+<!--      const nextGyeolkeTime = new Date();-->
+
+<!--      nextBlackholeTime.setHours(11, 52, 0, 0); // 다음 검은 구멍 고정 시간-->
+<!--      nextGyeolkeTime.setHours(12, 0, 0, 0); // 다음 결계 고정 시간-->
+
+<!--      if (now > nextBlackholeTime) nextBlackholeTime.setDate(now.getDate() + 1);-->
+<!--      if (now > nextGyeolkeTime) nextGyeolkeTime.setDate(now.getDate() + 1);-->
+
+<!--      const remainBlackhole = Math.floor((nextBlackholeTime - now) / 1000);-->
+<!--      const remainGyeolke = Math.floor((nextGyeolkeTime - now) / 1000);-->
+
+<!--      function formatTime(sec) {-->
+<!--        const min = Math.floor(sec / 60);-->
+<!--        const s = sec % 60;-->
+<!--        return `${min}분 ${s}초`;-->
+<!--      }-->
+
+<!--      document.getElementById("blackhole-timer").textContent = `검은 구멍 남은 시간: ${formatTime(remainBlackhole)}`;-->
+<!--      document.getElementById("blackhole-next").textContent = `다음 검은 구멍: ${nextBlackholeTime.getHours().toString().padStart(2, '0')}:${nextBlackholeTime.getMinutes().toString().padStart(2, '0')}`;-->
+<!--      document.getElementById("gyeolke-timer").textContent = `결계 남은 시간: ${formatTime(remainGyeolke)}`;-->
+<!--      document.getElementById("gyeolke-next").textContent = `다음 결계: ${nextGyeolkeTime.getHours().toString().padStart(2, '0')}:${nextGyeolkeTime.getMinutes().toString().padStart(2, '0')}`;-->
+<!--    }-->
+
+<!--    setInterval(updateDungeonTimers, 1000);-->
+<!--    updateDungeonTimers(); // 초기화-->
+<!--  </script>-->
+</main>
+</body>
+</html>
