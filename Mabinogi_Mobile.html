@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>숙제 도우미</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #1c1c1e;
+      color: white;
+    }
+    header {
+      background-color: #2c2c2e;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .timerBar {
+      background: #343436;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .mainContainer {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+    .homeworkBox, .calcBox {
+      background: white;
+      color: black;
+      padding: 1.5rem;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 300px;
+    }
+    .checkboxList div {
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .checkboxList div img {
+      width: 20px;
+      height: 20px;
+    }
+    .checkboxList input[type="checkbox"] {
+      margin: 0 0.2rem;
+      transform: scale(1.2);
+    }
+    form label {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+    }
+    form label input[type="number"] {
+      margin-left: auto;
+      width: 100px;
+      padding: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      color: #000;
+    }
+    button[type="submit"] {
+      margin-top: 1rem;
+      padding: 0.4rem 1rem;
+      font-size: 1rem;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #216724;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #1c6c1c;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div><strong>마비노기 도우미</strong></div>
+  <nav>
+    <a href="rune.html">룬 티어 / 도감</a>
+    <a href="web_마비노기.html">정보집</a>
+  </nav>
+</header>
+
+<div class="timerBar" id="timerDisplay"></div>
+
+<main class="mainContainer">
+  <section class="homeworkBox" id="homework">
+    <h2>숙제 체크리스트</h2>
+
+    <div class="checkboxGroup">
+      <h3>일일</h3>
+      <hr>
+      <h4>컨텐츠</h4>
+      <div class="checkboxList">
+        <div> <img src="img/검은구멍.jpg" alt="icon"> 검은구멍: <input type="checkbox"> <input type="checkbox"> <input type="checkbox"></div>
+        <div> <img src="img/결계.jpg" alt="icon"> 소환의 결계: <input type="checkbox"> <input type="checkbox"></div>
+        <div> <img src="img/일일미션.jpg" alt="icon"> 일일 미션: <input type="checkbox"></div>
+        <div> <img src="img/망령의탑.jpg" alt="icon"> 망령의 탑: <input type="checkbox"> <input type="checkbox"> <input type="checkbox"> <input type="checkbox"> <input type="checkbox"></div>
+        <div> <img src="img/아르바이트.jpg" alt="icon"> 요일 던전&아르바이트: <input type="checkbox"> <input type="checkbox"></div>
+        <div> <img src="img/심층던전.jpg" alt="icon"> 심층 던전: <input type="checkbox"></div>
+      </div>
+
+      <h4>캐시샵</h4>
+      <div class="checkboxList">
+        <div> <img src="img/보물상자.jpg" alt="icon"> 보석 보물상자: <input type="checkbox"></div>
+        <div> <img src="img/염색약.jpg" alt="icon"> 무료 패션: <input type="checkbox"></div>
+        <div> <img src="img/은동전.jpg" alt="icon"> 데카 은동전 상자: <input type="checkbox"></div>
+      </div>
+    </div>
+
+    <div class="checkboxGroup">
+      <hr>
+      <h3>주간</h3>
+      <div class="checkboxList">
+        <div> <img src="img/주간미션.jpg" alt="icon"> 주간 미션: <input type="checkbox"></div>
+        <div> <img src="img/마물퇴치증표.jpg" alt="icon"> 마물 퇴치 증표 교환: <input type="checkbox"></div>
+        <div> <img src="img/페리.jpg" alt="icon"> 필드보스: <input type="checkbox"> <input type="checkbox"> <input type="checkbox"></div>
+        <div> <img src="img/파멸의전당.jpg" alt="icon"> 어비스: <input type="checkbox"> <input type="checkbox"> <input type="checkbox"></div>
+        <div> <img src="img/글라스기브넨.jpg" alt="icon"> 레이드: <input type="checkbox"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="calcBox" id="attack-calc">
+    <h2>공격력 계산기</h2>
+    <hr>
+    <form onsubmit="calculator(); return false;">
+      <label>캐릭터 공격력: <input type="number" id="charAtk" required></label><br>
+      <label>무기 기본 공격력: <input type="number" id="baseAtk" required></label><br>
+      <label>각인 공격력: <input type="number" id="engraveAtk" required></label><br>
+      <label>무기 인장 수치: <input type="number" id="sealAtk" required></label><br>
+      <label>앰블럼 표기%: <input type="number" id="emblemPercent" required></label><br>
+      <label>무기 스탯 보너스: <input type="number" id="statBonus" required></label><br>
+      <label>목걸이 공격력: <input type="number" id="neckAtk" required></label><br><br>
+      <button type="submit">공격력 계산</button>
+    </form>
+    <div class="result" id="attackResult"></div>
+  </section>
+</main>
+
+<script>
+  function formatTime(minutes, seconds) {
+    return `${minutes}분 ${seconds}초`;
+  }
+
+  function updateTimerDisplay() {
+    const now = new Date();
+    const m = now.getMinutes();
+    const s = now.getSeconds();
+
+    const remainingToHour = (59 - m) * 60 + (60 - s);
+    const eqMin = Math.floor(remainingToHour / 60);
+    const eqSec = remainingToHour % 60;
+
+    let nextDeepMinute = m < 30 ? 30 : 60;
+    const remainingToDeep = (nextDeepMinute - m - 1) * 60 + (60 - s);
+    const deepMin = Math.floor(remainingToDeep / 60);
+    const deepSec = remainingToDeep % 60;
+
+    document.getElementById("timerDisplay").textContent =
+            `다음 결계까지 ${formatTime(eqMin, eqSec)} | ` +
+            `다음 심층구멍까지 ${formatTime(deepMin, deepSec)}`;
+  }
+
+  function calculator() {
+    const charAtk = Number(document.getElementById("charAtk").value);
+    const baseAtk = Number(document.getElementById("baseAtk").value);
+    const engraveAtk = Number(document.getElementById("engraveAtk").value);
+    const sealAtk = Number(document.getElementById("sealAtk").value);
+    const emblemPercent = Number(document.getElementById("emblemPercent").value);
+    const statBonus = Number(document.getElementById("statBonus").value);
+    const neckAtk = Number(document.getElementById("neckAtk").value);
+
+    const weaponTotal = baseAtk + engraveAtk + sealAtk;
+    const finalAttack = charAtk + (weaponTotal * (1 + emblemPercent / 100)) + statBonus + neckAtk;
+
+    document.getElementById("attackResult").textContent = `최종 공격력: ${Math.round(finalAttack)}`
+  }
+
+  setInterval(() => {
+    const now = new Date();
+    const m = now.getMinutes();
+    const s = now.getSeconds();
+
+    updateTimerDisplay();
+    if (m === 0 && s === 0) {
+      alert(`결계 출현!`);
+    }
+    if ((m === 0 || m === 30) && s === 0) {
+      alert(`심층구멍 출현!`);
+    }
+  }, 1000);
+</script>
+</body>
+</html>

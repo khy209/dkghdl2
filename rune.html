@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>룬 티어 / 도감</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #1c1c1e;
+      color: white;
+    }
+    header {
+      background-color: #2c2c2e;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 2rem;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      color: black;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    td {
+      overflow: visible;
+    }
+    caption {
+      caption-side: top;
+      text-align: left;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .runeBadge {
+      display: inline-block;
+      background-color: #ff9800;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 12px;
+      margin: 2px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .pink { background-color: #e91e63; }
+    .purple { background-color: #9c27b0; }
+
+    td:first-child {
+      background-color: #c4c4c4;
+      color: white;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div><strong>룬 티어 / 도감</strong></div>
+  <nav>
+    <a href="Mabinogi_Mobile.html">숙제 도우미</a>
+    <a href="web_마비노기.html">정보집</a>
+  </nav>
+</header>
+<main>
+  <section id="runeTable">
+    <table>
+      <caption>룬 티어별 종류</caption>
+      <thead>
+      <tr>
+        <th>티어</th>
+        <th>앰블럼</th>
+        <th>무기</th>
+        <th>장신구</th>
+        <th>방어구</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1티어</td>
+        <td>
+          <span class="runeBadge">냉혹함</span>
+          <span class="runeBadge">현란함</span>
+          <span class="runeBadge">지혜로움</span>
+          <span class="runeBadge">여신의 가호</span>
+          <span class="runeBadge">여신의 권능</span>
+          <span class="runeBadge">강렬함+</span>
+        </td>
+        <td>
+          <span class="runeBadge pink">연격</span>
+          <span class="runeBadge">파열</span>
+          <span class="runeBadge">몰아치는 바람</span>
+          <span class="runeBadge">무수한 담금질</span>
+          <span class="runeBadge">가시 덩굴</span>
+          <span class="runeBadge">잊힌 시대</span>
+          <span class="runeBadge">마법 탐구가</span>
+          <span class="runeBadge">영혼 수확자</span>
+          <span class="runeBadge">격전+</span>
+          <span class="runeBadge pink">경이</span>
+          <span class="runeBadge pink">궁극</span>
+          <span class="runeBadge">차오르는 안개</span>
+          <span class="runeBadge">격노+</span>
+          <span class="runeBadge">결투+</span>
+          <span class="runeBadge">옛 검투사</span>
+        </td>
+        <td>
+          <span class="runeBadge">빙검</span>
+          <span class="runeBadge">땅거미+</span>
+          <span class="runeBadge">불기둥+</span>
+          <span class="runeBadge">빛줄기+</span>
+          <span class="runeBadge">산사태+</span>
+          <span class="runeBadge">오로라+</span>
+          <span class="runeBadge">재빠른+</span>
+          <span class="runeBadge">잿더미+</span>
+          <span class="runeBadge">초음파+</span>
+          <span class="runeBadge">치명적+</span>
+          <span class="runeBadge">치밀함+</span>
+          <span class="runeBadge">갈채+</span>
+          <span class="runeBadge">격파+</span>
+          <span class="runeBadge">관통+</span>
+          <span class="runeBadge">나비+</span>
+          <span class="runeBadge">날개+</span>
+          <span class="runeBadge">독무+</span>
+          <span class="runeBadge">독성+</span>
+          <span class="runeBadge">돌격+</span>
+          <span class="runeBadge">맹공+</span>
+          <span class="runeBadge">맹렬+</span>
+          <span class="runeBadge">물결+</span>
+          <span class="runeBadge">반격+</span>
+          <span class="runeBadge">반전+</span>
+          <span class="runeBadge">북풍+</span>
+          <span class="runeBadge">분출+</span>
+          <span class="runeBadge">억압+</span>
+          <span class="runeBadge">연쇄+</span>
+          <span class="runeBadge">열상+</span>
+          <span class="runeBadge">열혈+</span>
+          <span class="runeBadge">운석+</span>
+          <span class="runeBadge">응보+</span>
+          <span class="runeBadge">재치+</span>
+          <span class="runeBadge">전진+</span>
+          <span class="runeBadge">종장+</span>
+          <span class="runeBadge">증폭+</span>
+          <span class="runeBadge">질주+</span>
+          <span class="runeBadge">집중+</span>
+          <span class="runeBadge">참격+</span>
+          <span class="runeBadge">탄력+</span>
+          <span class="runeBadge">화력+</span>
+          <span class="runeBadge">화음+</span>
+          <span class="runeBadge">회전+</span>
+          <span class="runeBadge">매+</span>
+
+        </td>
+        <td>
+          <span class="runeBadge pink">발진</span>
+          <span class="runeBadge pink">전술가</span>
+          <span class="runeBadge pink">기습</span>
+          <span class="runeBadge pink">끈기</span>
+          <span class="runeBadge pink">결핍</span>
+          <span class="runeBadge pink">압도</span>
+          <span class="runeBadge pink">위협</span>
+          <span class="runeBadge pink">절망</span>
+          <span class="runeBadge">쇄빙</span>
+          <span class="runeBadge">횃불</span>
+          <span class="runeBadge">깨달음</span>
+          <span class="runeBadge">공명하는 수정</span>
+          <span class="runeBadge">전율하는 악상</span>
+          <span class="runeBadge">타오르는 심장</span>
+          <span class="runeBadge">엄습하는 그림자</span>
+          <span class="runeBadge">거인의 팔</span>
+          <span class="runeBadge">고요한 바람</span>
+          <span class="runeBadge">비열한 일격</span>
+          <span class="runeBadge">신성한 수양</span>
+          <span class="runeBadge">파멸의 낙인</span>
+        </td>
+      </tr>
+      <tr>
+        <td>2티어</td>
+        <td>
+          <span class="runeBadge">날쌤+</span>
+        </td>
+        <td>
+          <span class="runeBadge pink">경이</span>
+          <span class="runeBadge pink">궁극</span>
+          <span class="runeBadge">차오르는 안개</span>
+          <span class="runeBadge">격노+</span>
+          <span class="runeBadge">결투+</span>
+          <span class="runeBadge">옛 검투사</span>
+        </td>
+        <td>
+          <span class="runeBadge purple">독성</span>
+          <span class="runeBadge">속주</span>
+          <span class="runeBadge">수레바퀴+</span>
+          <span class="runeBadge">끈질김+</span>
+          <span class="runeBadge">다가옴+</span>
+          <span class="runeBadge">산뜻함+</span>
+          <span class="runeBadge">감쌈+</span>
+          <span class="runeBadge">감전+</span>
+          <span class="runeBadge">겨울+</span>
+          <span class="runeBadge">결속+</span>
+          <span class="runeBadge">광휘+</span>
+          <span class="runeBadge">낙화+</span>
+          <span class="runeBadge">내상+</span>
+          <span class="runeBadge">돌진+</span>
+          <span class="runeBadge">무희+</span>
+          <span class="runeBadge">박애+</span>
+          <span class="runeBadge">불씨+</span>
+          <span class="runeBadge">속행+</span>
+          <span class="runeBadge">업화+</span>
+          <span class="runeBadge">조롱+</span>
+          <span class="runeBadge">회심+</span>
+        </td>
+        <td>
+          <span class="runeBadge pink">전술가</span>
+          <span class="runeBadge">원소술사</span>
+          <span class="runeBadge">메마른 땅</span>
+          <span class="runeBadge">응축된 마력</span>
+          <span class="runeBadge">용병 왕</span>
+          <span class="runeBadge">검은 불길</span>
+          <span class="runeBadge">칼날 보루</span>
+          <span class="runeBadge">난투+</span>
+          <span class="runeBadge">초기+</span>
+          <span class="runeBadge">흡혈+</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>3티어</td>
+        <td>
+          <span class="runeBadge">광폭함+</span>
+        </td>
+        <td>
+          <span class="runeBadge">냉혹한 겨울</span>
+          <span class="runeBadge">역병+</span>
+        </td>
+        <td>
+          <span class="runeBadge">이중주+</span>
+          <span class="runeBadge">회오리+</span>
+          <span class="runeBadge">강화+</span>
+          <span class="runeBadge">공명+</span>
+          <span class="runeBadge">기만+</span>
+          <span class="runeBadge">도약+</span>
+          <span class="runeBadge">분노+</span>
+          <span class="runeBadge">정화+</span>
+          <span class="runeBadge">즉흥+</span>
+          <span class="runeBadge">축성+</span>
+          <span class="runeBadge">흉성+</span>
+          <span class="runeBadge">희생+</span>
+        </td>
+        <td>
+          <span class="runeBadge pink">기습</span>
+          <span class="runeBadge pink">끈기</span>
+          <span class="runeBadge">극야</span>
+          <span class="runeBadge">연승</span>
+          <span class="runeBadge">과충전</span>
+          <span class="runeBadge">얼어붙은 불꽃</span>
+          <span class="runeBadge">검은 서약</span>
+          <span class="runeBadge">성채+</span>
+        </td>
+      </tr>
+      <tr>
+        <td>4티어</td>
+        <td>
+          <span class="runeBadge">굳건함+</span>
+        </td>
+        <td>
+          <span class="runeBadge">고뇌</span>
+          <span class="runeBadge">명암</span>
+          <span class="runeBadge">조화</span>
+          <span class="runeBadge">타오르는 불씨</span>
+          <span class="runeBadge">살아있는 번갯불</span>
+          <span class="runeBadge">질풍+</span>
+        </td>
+        <td>
+          <span class="runeBadge">서리가시+</span>
+          <span class="runeBadge">깜빡임+</span>
+          <span class="runeBadge">피바람+</span>
+          <span class="runeBadge">급습+</span>
+          <span class="runeBadge">열풍+</span>
+        </td>
+        <td>
+          <span class="runeBadge pink">결핍</span>
+          <span class="runeBadge">얼어붙음+</span>
+          <span class="runeBadge">격통+</span>
+          <span class="runeBadge">방호+</span>
+          <span class="runeBadge">쇠약+</span>
+          <span class="runeBadge">침식+</span>
+          <span class="runeBadge">독 안개</span>
+        </td>
+      </tr>
+      <tr>
+        <td>5티어</td>
+        <td></td>
+        <td>
+          <span class="runeBadge pink">강철</span>
+          <span class="runeBadge pink">고통</span>
+          <span class="runeBadge pink">극독</span>
+          <span class="runeBadge pink">선고</span>
+          <span class="runeBadge pink">적혈</span>
+          <span class="runeBadge pink">전율</span>
+          <span class="runeBadge pink">혹한</span>
+          <span class="runeBadge pink">화염</span>
+        </td>
+        <td>
+          <span class="runeBadge">고동침+</span>
+          <span class="runeBadge">고드름+</span>
+          <span class="runeBadge">보름달+</span>
+          <span class="runeBadge">순발력+</span>
+          <span class="runeBadge">낙뢰+</span>
+          <span class="runeBadge">방해+</span>
+          <span class="runeBadge">인과+</span>
+          <span class="runeBadge">전류+</span>
+          <span class="runeBadge">절단+</span>
+          <span class="runeBadge">충돌+</span>
+          <span class="runeBadge">파편+</span>
+          <span class="runeBadge">패기+</span>
+          <span class="runeBadge">포효+</span>
+          <span class="runeBadge">화약+</span>
+        </td>
+        <td>
+          <span class="runeBadge pink">압도</span>
+          <span class="runeBadge pink">위협</span>
+          <span class="runeBadge pink">절망</span>
+          <span class="runeBadge">반작용</span>
+          <span class="runeBadge">끝없는 활력</span>
+          <span class="runeBadge">생존 본능</span>
+          <span class="runeBadge">생명+</span>
+          <span class="runeBadge">제물+</span>
+        </td>
+      </tr>
+
+
+
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
